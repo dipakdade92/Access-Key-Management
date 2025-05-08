@@ -14,20 +14,35 @@ const typeorm_1 = require("@nestjs/typeorm");
 const token_module_1 = require("./token/token.module");
 const redis_module_1 = require("./redis/redis.module");
 const dotenv_1 = require("dotenv");
+const throttler_1 = require("@nestjs/throttler");
+const throttler_2 = require("@nestjs/throttler");
 (0, dotenv_1.configDotenv)();
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forRoot({
+        imports: [
+            typeorm_1.TypeOrmModule.forRoot({
                 type: 'sqlite',
                 database: process.env.DB_NAME,
                 entities: [],
                 synchronize: true,
-            }), token_module_1.TokenModule, redis_module_1.RedisModule],
+            }),
+            throttler_1.ThrottlerModule.forRoot({
+                throttlers: [
+                    {
+                        ttl: 60,
+                        limit: 5,
+                    },
+                ],
+                errorMessage: 'Too many requests, please try again later!',
+            }),
+            token_module_1.TokenModule,
+            redis_module_1.RedisModule,
+        ],
         controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+        providers: [app_service_1.AppService, throttler_2.ThrottlerGuard],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map

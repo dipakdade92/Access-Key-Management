@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateAccessKeyDto = void 0;
 const class_validator_1 = require("class-validator");
+const isFutureDate_1 = require("../validators/isFutureDate");
 class UpdateAccessKeyDto {
     rateLimit;
     expiresAt;
@@ -20,11 +21,13 @@ __decorate([
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsInt)(),
     (0, class_validator_1.Min)(1),
+    (0, class_validator_1.Max)(1000),
     __metadata("design:type", Number)
 ], UpdateAccessKeyDto.prototype, "rateLimit", void 0);
 __decorate([
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsDateString)(),
+    (0, isFutureDate_1.IsFutureDate)({ message: 'The expiration date must be in the future' }),
     __metadata("design:type", String)
 ], UpdateAccessKeyDto.prototype, "expiresAt", void 0);
 //# sourceMappingURL=update-access-key.dto.js.map
