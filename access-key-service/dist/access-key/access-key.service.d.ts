@@ -8,15 +8,13 @@ export declare class AccessKeyService {
     private readonly repo;
     constructor(redisClient: RedisClientType<any, any>, repo: Repository<AccessKey>);
     generateKey(): string;
-    createKey(dto: CreateAccessKeyDto): Promise<AccessKey>;
-    listKeys(): Promise<AccessKey[]>;
+    createKey(dto: CreateAccessKeyDto): Promise<any>;
+    listKeys(): any;
     deleteKey(id: string): Promise<{
         message: string;
     }>;
-    updateKey(id: string, dto: UpdateAccessKeyDto): Promise<AccessKey>;
-    findByKey(key: string): Promise<AccessKey | null>;
-    disableKey(key: string): Promise<AccessKey | {
-        message: string;
-    } | null>;
+    updateKey(id: string, dto: UpdateAccessKeyDto): Promise<any>;
+    findByKey(key: string): Promise<any>;
+    disableKey(key: string): Promise<any>;
     checkRateLimit(key: string): Promise<boolean>;
 }

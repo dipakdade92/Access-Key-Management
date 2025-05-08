@@ -11,9 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var _a, _b;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RedisService = void 0;
 const common_1 = require("@nestjs/common");
+const redis_1 = require("redis");
 let RedisService = class RedisService {
     redisClient;
     subClient;
@@ -53,6 +55,6 @@ exports.RedisService = RedisService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, common_1.Inject)('REDIS_CLIENT')),
     __param(1, (0, common_1.Inject)('REDIS_SUB_CLIENT')),
-    __metadata("design:paramtypes", [Object, Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof redis_1.RedisClientType !== "undefined" && redis_1.RedisClientType) === "function" ? _a : Object, typeof (_b = typeof redis_1.RedisClientType !== "undefined" && redis_1.RedisClientType) === "function" ? _b : Object])
 ], RedisService);
 //# sourceMappingURL=redis.service.js.map

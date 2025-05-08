@@ -4,10 +4,10 @@ import { UpdateAccessKeyDto } from 'src/dto/update-access-key.dto';
 export declare class AccessKeyController {
     private readonly service;
     constructor(service: AccessKeyService);
-    createKey(dto: CreateAccessKeyDto): Promise<import("../entities/entity.access-key").AccessKey>;
-    listKeys(): Promise<import("../entities/entity.access-key").AccessKey[]>;
+    createKey(dto: CreateAccessKeyDto): Promise<any>;
+    listKeys(): any;
     deleteKey(id: string): Promise<{
         message: string;
     }>;
-    updateKey(id: string, dto: UpdateAccessKeyDto): Promise<import("../entities/entity.access-key").AccessKey>;
+    updateKey(id: string, dto: UpdateAccessKeyDto): Promise<any>;
 }
